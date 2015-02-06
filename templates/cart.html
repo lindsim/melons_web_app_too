@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<table class="table table-striped">
+    <tr><th>Melon Name</th><th>Quantity</th><th>Price</th><th>Total</th></tr>
+    {% for item in cart_contents %}  
+        <tr><td>{{ item[0].common_name }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[0].price_str() }}</td>
+        <td>${{ '{0:0.2f}'.format(item[1]*item[0].price) }}</td></tr>
+    {% endfor %}  
+</table>
+<h3>Total: ${{ '{0:0.2f}'.format(total)}}   </h3>
+
+<a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
+
+
+{% endblock %}
